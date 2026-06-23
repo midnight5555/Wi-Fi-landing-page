@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
       <body>
         <h1>Welcome</h1>
         <p>Your internet package has expired.</p>
-        <button onclick="window.location='http://localhost:5173/watch-ad'">
+        <button onclick="window.location='https://ryanadsportal.vercel.app/ad-player?placement_id=wifi-portal&return_url=https://example.com'">
           Watch Ad For Free Internet
         </button>
       </body>
