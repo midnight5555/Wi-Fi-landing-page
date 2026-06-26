@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-const PORTAL_HOST = 'https://rewards-analytics.vercel.app';
+const PORTAL_HOST = 'https://wi-fi-landing-page-83bexep6v-ritaaak06-5374s-projects.vercel.app';
 
 app.get('/', (req, res) => {
   const returnUrl = encodeURIComponent(`${PORTAL_HOST}/reward?minutes=30`);
