@@ -67,7 +67,7 @@ app.get('/reward', (req, res) => {
           <h2>Ad Complete!</h2>
           <p>You've earned <span class="time">${currentMinutes} minutes</span> of free internet.</p>
           <a href="https://www.google.com" class="btn btn-primary">
-            Browse the Internet (${currentMinutes} min)
+            Browse the Internet
           </a>
           <a href="https://ryanadsportal.vercel.app/ad-player?placement_id=wifi-portal&return_url=${returnUrlForNextAd}"
              class="btn btn-secondary">
