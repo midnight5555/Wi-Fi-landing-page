@@ -1,11 +1,9 @@
 const express = require('express');
 const app = express();
 
-const PORTAL_HOST = 'http://192.168.1.204:3004'; // adjust to your IP/port
-
+const PORTAL_HOST = 'https://rewards-analytics.vercel.app';
 
 app.get('/', (req, res) => {
-
   const returnUrl = encodeURIComponent(`${PORTAL_HOST}/reward?minutes=30`);
 
   res.send(`
@@ -31,7 +29,6 @@ app.get('/', (req, res) => {
   `);
 });
 
-
 app.get('/reward', (req, res) => {
   const currentMinutes = parseInt(req.query.minutes) || 30;
   const nextMinutes = currentMinutes + 30;
@@ -47,28 +44,18 @@ app.get('/reward', (req, res) => {
         <style>
           body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background: #f5f5f5; }
           .card {
-            max-width: 480px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 12px;
-            padding: 2.5rem;
+            max-width: 480px; margin: 0 auto; background: white;
+            border-radius: 12px; padding: 2.5rem;
             box-shadow: 0 2px 12px rgba(0,0,0,0.1);
           }
           .emoji { font-size: 48px; margin-bottom: 16px; }
           h2 { margin: 0 0 8px; }
           .time { font-size: 28px; font-weight: bold; color: #4c87af; }
-          p { color: #555; margin-bottom: 32px; }
+          p { color: #555; margin-bottom: 24px; }
           .btn {
-            display: block;
-            width: 100%;
-            padding: 14px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-bottom: 12px;
-            text-decoration: none;
-            text-align: center;
+            display: block; width: 100%; padding: 14px; border: none;
+            border-radius: 8px; font-size: 16px; cursor: pointer;
+            margin-bottom: 12px; text-decoration: none; text-align: center;
           }
           .btn-primary { background: #4c87af; color: white; }
           .btn-secondary { background: #f0f0f0; color: #333; }
@@ -78,17 +65,13 @@ app.get('/reward', (req, res) => {
         <div class="card">
           <div class="emoji">🎉</div>
           <h2>Ad Complete!</h2>
-          <p>You've earned <span class="time">${currentMinutes} minutes</span> of free internet. What would you like to do?</p>
-
-          <!-- Use Free Internet: goes to Google (or any normal site) -->
+          <p>You've earned <span class="time">${currentMinutes} minutes</span> of free internet.</p>
           <a href="https://www.google.com" class="btn btn-primary">
-            Use Free Internet (${currentMinutes} min)
+            Browse the Internet (${currentMinutes} min)
           </a>
-
-          <!-- Watch another ad: adds 30 more minutes -->
-          <a href="https://ryanadsportal.vercel.app/ad-player?placement_id=wifi-portal&return_url=${returnUrlForNextAd}" 
+          <a href="https://ryanadsportal.vercel.app/ad-player?placement_id=wifi-portal&return_url=${returnUrlForNextAd}"
              class="btn btn-secondary">
-            Watch Another Ad (+30 min)
+            Watch Another Ad (+30 min → ${nextMinutes} total)
           </a>
         </div>
       </body>
@@ -96,7 +79,5 @@ app.get('/reward', (req, res) => {
   `);
 });
 
-app.listen(3004, '0.0.0.0', () => {
-  console.log(`Portal running — return URL will be: ${PORTAL_HOST}/reward`);
-});
+module.exports = app;
 
