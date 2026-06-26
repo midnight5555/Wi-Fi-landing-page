@@ -1,4 +1,7 @@
- res.send(`
+const express = require('express');
+const app = express();
+
+res.send(`
     <html>
       <head>
         <title>Reward</title>
